@@ -1,16 +1,16 @@
-docker build -t ayesjm/multi-client:latest -t ayesjm/multi-client:$SHA -f ./client/Dockerfile ./client
-docker build -t ayesjm/multi-server:latest -t ayesjm/multi-server:$SHA -f ./server/Dockerfile ./server
-docker build -t ayesjm/multi-worker:latest -t ayesjm/multi-worker:$SHA -f ./worker/Dockerfile ./worker
+docker build -t jlnzllc/multi-client:latest -t jlnzllc/multi-client:$SHA -f ./client/Dockerfile ./client
+docker build -t jlnzllc/multi-server:latest -t jlnzllc/multi-server:$SHA -f ./server/Dockerfile ./server
+docker build -t jlnzllc/multi-worker:latest -t jlnzllc/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
-docker push ayesjm/mutli-client:latest
-docker push ayesjm/multi-server:latest
-docker push ayesjm/multi-worker:latest
+docker push jlnzllc/mutli-client:latest
+docker push jlnzllc/multi-server:latest
+docker push jlnzllc/multi-worker:latest
 
-docker push ayesjm/mutli-client:$SHA
-docker push ayesjm/multi-server:$SHA
-docker push ayesjm/multi-worker:$SHA
+docker push jlnzllc/mutli-client:$SHA
+docker push jlnzllc/multi-server:$SHA
+docker push jlnzllc/multi-worker:$SHA
 
 kubectl apply -f k8s
-kubectl set image deployments/server-deployment server=ayesjm/multi-server:$SHA
-kubectl set image deployments/client-deployment client=ayesjm/multi-client:$SHA
-kubectl set image deployments/worker-deployment worker=ayesjm/multi-worker:$SHA
+kubectl set image deployments/server-deployment server=jlnzllc/multi-server:$SHA
+kubectl set image deployments/client-deployment client=jlnzllc/multi-client:$SHA
+kubectl set image deployments/worker-deployment worker=jlnzllc/multi-worker:$SHA
